@@ -1,6 +1,77 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "nx-vite": {
+      "root": "libs/nx-vite",
+      "sourceRoot": "libs/nx-vite/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/nx-vite/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nx-vite"],
+          "options": {
+            "jestConfig": "libs/nx-vite/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/nx-vite",
+            "tsConfig": "libs/nx-vite/tsconfig.lib.json",
+            "packageJson": "libs/nx-vite/package.json",
+            "main": "libs/nx-vite/src/index.ts",
+            "assets": [
+              "libs/nx-vite/*.md",
+              {
+                "input": "./libs/nx-vite/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-vite/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-vite",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/nx-vite",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-vite-e2e": {
+      "root": "apps/nx-vite-e2e",
+      "projectType": "application",
+      "sourceRoot": "apps/nx-vite-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-vite:build",
+            "npmPackageName": "@starfleet/nx-vite",
+            "pluginOutputPath": "dist/libs/nx-vite",
+            "jestConfig": "apps/nx-vite-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }

@@ -18,5 +18,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "nx-vite": {
+      "tags": []
+    },
+    "nx-vite-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nx-vite"]
+    }
+  }
 }
