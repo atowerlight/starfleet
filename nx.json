@@ -26,5 +26,13 @@
       "tags": [],
       "implicitDependencies": ["nx-vite"]
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
