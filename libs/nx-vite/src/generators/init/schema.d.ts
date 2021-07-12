@@ -1,4 +1,4 @@
 export interface InitGeneratorSchema {
-  unitTestRunner?: 'jest' | 'none';
+  // unitTestRunner?: 'jest' | 'none';
   skipFormat?: boolean;
 }

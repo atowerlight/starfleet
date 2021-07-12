@@ -4,15 +4,14 @@ import {
   GeneratorCallback,
   Tree,
   updateJson,
-  writeJson,
 } from '@nrwl/devkit';
 import { setDefaultCollection } from '@nrwl/workspace/src/utilities/set-default-collection';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 import { InitGeneratorSchema } from './schema';
-import { nxVersion } from '../../utils/versions';
-import { jestInitGenerator } from '@nrwl/jest';
+import { nxVersion, viteVersion } from '../../utils/versions';
 
 function updateDependencies(tree: Tree) {
+  // 先删除了再添加
   updateJson(tree, 'package.json', (json) => {
     delete json.dependencies['@starfleet/nx-vite'];
     return json;
@@ -21,24 +20,24 @@ function updateDependencies(tree: Tree) {
   return addDependenciesToPackageJson(
     tree,
     {
-      // tslib: '^2.0.0',
+      react: '^17.0.0',
+      'react-dom': '^17.0.0',
     },
     {
+      '@types/react': '^17.0.0',
+      '@types/react-dom': '^17.0.0',
+      '@vitejs/plugin-react-refresh': '^1.3.1',
+      vite: viteVersion,
       '@starfleet/nx-vite': nxVersion,
     }
   );
 }
 
-function initRootBabelConfig(tree: Tree) {
-  if (tree.exists('/babel.config.json') || tree.exists('/babel.config.js')) {
-    return;
-  }
-
-  writeJson(tree, '/babel.config.json', {
-    babelrcRoots: ['*'], // Make sure .babelrc files other than root can be loaded in a monorepo
-  });
-}
-
+/**
+ * 添加 @starfleet/nx-vite 依赖
+ * @param tree
+ * @param schema
+ */
 export async function viteInitGenerator(
   tree: Tree,
   schema: InitGeneratorSchema
@@ -47,14 +46,15 @@ export async function viteInitGenerator(
 
   setDefaultCollection(tree, '@starfleet/nx-vite');
 
-  if (!schema.unitTestRunner || schema.unitTestRunner === 'jest') {
-    const jestTask = jestInitGenerator(tree, {});
-    tasks.push(jestTask);
-  }
+  // 暂时去掉 jest vite 官方还没计划
+  // if (!schema.unitTestRunner || schema.unitTestRunner === 'jest') {
+  //   const jestTask = jestInitGenerator(tree, {});
+  //   tasks.push(jestTask);
+  // }
   const installTask = updateDependencies(tree);
   tasks.push(installTask);
-  initRootBabelConfig(tree);
   if (!schema.skipFormat) {
+    // 使用 Prettier 进行格式化
     await formatFiles(tree);
   }
   return runTasksInSerial(...tasks);

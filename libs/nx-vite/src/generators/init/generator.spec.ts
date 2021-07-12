@@ -12,7 +12,7 @@ describe('init', () => {
     tree = createTreeWithEmptyWorkspace();
   });
 
-  it('should add web dependencies', async () => {
+  it('should add nx-vite dependencies', async () => {
     const existing = 'existing';
     const existingVersion = '1.0.0';
     addDependenciesToPackageJson(
@@ -41,38 +41,10 @@ describe('init', () => {
     });
   });
 
-  it('should not add jest config if unitTestRunner is none', async () => {
-    await viteInitGenerator(tree, {
-      unitTestRunner: 'none',
-    });
-    expect(tree.exists('jest.config.js')).toBe(false);
-  });
-
-  describe('babel config', () => {
-    it('should create babel config if not present', async () => {
-      await viteInitGenerator(tree, {
-        unitTestRunner: 'none',
-      });
-      expect(tree.exists('babel.config.json')).toBe(true);
-    });
-
-    it('should not overwrite existing babel config', async () => {
-      tree.write('babel.config.json', '{ "preset": ["preset-awesome"] }');
-
-      await viteInitGenerator(tree, {
-        unitTestRunner: 'none',
-      });
-
-      const existing = readJson(tree, 'babel.config.json');
-      expect(existing).toEqual({ preset: ['preset-awesome'] });
-    });
-
-    it('should not overwrite existing babel config (.js)', async () => {
-      tree.write('/babel.config.js', 'module.exports = () => {};');
-      await viteInitGenerator(tree, {
-        unitTestRunner: 'none',
-      });
-      expect(tree.exists('babel.config.json')).toBe(false);
-    });
-  });
+  // it('should not add jest config if unitTestRunner is none', async () => {
+  //   await viteInitGenerator(tree, {
+  //     unitTestRunner: 'none',
+  //   });
+  //   expect(tree.exists('jest.config.js')).toBe(false);
+  // });
 });

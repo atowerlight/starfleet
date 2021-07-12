@@ -1,16 +1,10 @@
 {
-  "$schema": "http://json-schema.org/schema",
+  "$schema": "https://json-schema.org/schema",
   "id": "NxViteInit",
   "cli": "nx",
-  "title": "Init Web Plugin",
+  "title": "Init NxVite Plugin",
   "type": "object",
   "properties": {
-    "unitTestRunner": {
-      "description": "Adds the specified unit test runner",
-      "type": "string",
-      "enum": ["jest", "none"],
-      "default": "jest"
-    },
     "skipFormat": {
       "description": "Skip formatting files",
       "type": "boolean",
