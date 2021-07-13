@@ -19,6 +19,13 @@
     }
   },
   "projects": {
+    "nx-node": {
+      "tags": []
+    },
+    "nx-node-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nx-node"]
+    },
     "nx-vite": {
       "tags": []
     },

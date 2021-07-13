@@ -1,6 +1,76 @@
 {
   "version": 2,
   "projects": {
+    "nx-node": {
+      "root": "libs/nx-node",
+      "sourceRoot": "libs/nx-node/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/nx-node/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nx-node"],
+          "options": {
+            "jestConfig": "libs/nx-node/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/nx-node",
+            "tsConfig": "libs/nx-node/tsconfig.lib.json",
+            "packageJson": "libs/nx-node/package.json",
+            "main": "libs/nx-node/src/index.ts",
+            "assets": [
+              "libs/nx-node/*.md",
+              {
+                "input": "./libs/nx-node/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-node/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-node",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/nx-node",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-node-e2e": {
+      "root": "apps/nx-node-e2e",
+      "projectType": "application",
+      "sourceRoot": "apps/nx-node-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-node:build",
+            "npmPackageName": "@starfleet/nx-node",
+            "pluginOutputPath": "dist/libs/nx-node",
+            "jestConfig": "apps/nx-node-e2e/jest.config.js"
+          }
+        }
+      }
+    },
     "nx-vite": {
       "root": "libs/nx-vite",
       "sourceRoot": "libs/nx-vite/src",

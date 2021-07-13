@@ -1,2 +1,2 @@
 export const nxVersion = '*';
-export const viteVersion = '^2.3.7';
+export const viteVersion = '^2.4.1';
