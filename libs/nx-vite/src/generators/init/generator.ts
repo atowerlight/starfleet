@@ -26,8 +26,6 @@ function updateDependencies(tree: Tree) {
     {
       '@types/react': '^17.0.0',
       '@types/react-dom': '^17.0.0',
-      '@vitejs/plugin-react-refresh': '^1.3.1',
-      vite: viteVersion,
       '@starfleet/nx-vite': nxVersion,
     }
   );

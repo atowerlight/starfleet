@@ -30,6 +30,8 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@chialab/esbuild-plugin-swc": "^0.9.12",
+    "@chialab/esbuild-plugin-transform": "^0.9.6",
     "@nrwl/cli": "12.5.9",
     "@nrwl/devkit": "12.5.9",
     "@nrwl/eslint-plugin-nx": "12.5.9",

@@ -350,6 +350,61 @@
   resolved "https://registry.nlark.com/@bcoe/v8-coverage/download/@bcoe/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha1-daLotRy3WKdVPWgEpZMteqznXDk=
 
+"@chialab/esbuild-plugin-swc@^0.9.12":
+  version "0.9.12"
+  resolved "https://registry.nlark.com/@chialab/esbuild-plugin-swc/download/@chialab/esbuild-plugin-swc-0.9.12.tgz#3e8a35aff8b83319a043aeaf89f701e4aed6a121"
+  integrity sha1-Poo1r/i4MxmgQ66vifcB5K7WoSE=
+  dependencies:
+    "@chialab/esbuild-plugin-transform" "^0.9.6"
+    "@chialab/estransform" "^0.9.6"
+    "@chialab/node-resolve" "^0.9.8"
+    "@chialab/swc-plugin-htm" "^0.9.12"
+    "@swc/core" "^1.2.54"
+    "@swc/helpers" "^0.2.10"
+
+"@chialab/esbuild-plugin-transform@^0.9.6":
+  version "0.9.6"
+  resolved "https://registry.nlark.com/@chialab/esbuild-plugin-transform/download/@chialab/esbuild-plugin-transform-0.9.6.tgz#df7f7827e23c1755321b8efb818596597a2a91f8"
+  integrity sha1-3394J+I8F1UyG477gYWWWXoqkfg=
+  dependencies:
+    "@chialab/estransform" "^0.9.6"
+    esbuild "^0.12.0"
+
+"@chialab/estransform@^0.9.6":
+  version "0.9.6"
+  resolved "https://registry.nlark.com/@chialab/estransform/download/@chialab/estransform-0.9.6.tgz#ff0896e9cc5f6c284b4db490786f82af0d67acb3"
+  integrity sha1-/wiW6cxfbChLTbSQeG+Crw1nrLM=
+  dependencies:
+    "@parcel/source-map" "^2.0.0-rc.4"
+    acorn "^8.4.1"
+    acorn-jsx "^5.3.2"
+    acorn-walk "^8.1.1"
+    esbuild "^0.12.15"
+    magic-string "^0.25.7"
+
+"@chialab/node-resolve@^0.9.8":
+  version "0.9.8"
+  resolved "https://registry.nlark.com/@chialab/node-resolve/download/@chialab/node-resolve-0.9.8.tgz#e8b944b68b192b0685db54160467c2cc62126d83"
+  integrity sha1-6LlEtosZKwaF21QWBGfCzGISbYM=
+  dependencies:
+    enhanced-resolve "^5.8.2"
+    is-core-module "^2.5.0"
+
+"@chialab/swc-plugin-htm@^0.9.12":
+  version "0.9.12"
+  resolved "https://registry.nlark.com/@chialab/swc-plugin-htm/download/@chialab/swc-plugin-htm-0.9.12.tgz#78a0a6f9740879089e25a211d6ac172d5b995812"
+  integrity sha1-eKCm+XQIeQieJaIR1qwXLVuZWBI=
+  dependencies:
+    "@chialab/swc-types" "^0.9.12"
+    htm "^3.0.4"
+
+"@chialab/swc-types@^0.9.12":
+  version "0.9.12"
+  resolved "https://registry.nlark.com/@chialab/swc-types/download/@chialab/swc-types-0.9.12.tgz#02f90f6243556f09a501c5bb52b20b88b9fd6ae7"
+  integrity sha1-AvkPYkNVbwmlAcW7UrILiLn9auc=
+  dependencies:
+    "@swc/core" "^1.2.54"
+
 "@eslint/eslintrc@^0.4.0":
   version "0.4.3"
   resolved "https://registry.nlark.com/@eslint/eslintrc/download/@eslint/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
@@ -571,6 +626,18 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@napi-rs/triples@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.nlark.com/@napi-rs/triples/download/@napi-rs/triples-1.0.3.tgz?cache=0&sync_timestamp=1626933308610&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40napi-rs%2Ftriples%2Fdownload%2F%40napi-rs%2Ftriples-1.0.3.tgz#76d6d0c3f4d16013c61e45dfca5ff1e6c31ae53c"
+  integrity sha1-dtbQw/TRYBPGHkXfyl/x5sMa5Tw=
+
+"@node-rs/helper@^1.0.0":
+  version "1.2.1"
+  resolved "https://registry.nlark.com/@node-rs/helper/download/@node-rs/helper-1.2.1.tgz?cache=0&sync_timestamp=1626937530496&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40node-rs%2Fhelper%2Fdownload%2F%40node-rs%2Fhelper-1.2.1.tgz#e079b05f21ff4329d82c4e1f71c0290e4ecdc70c"
+  integrity sha1-4HmwXyH/QynYLE4fccApDk7Nxww=
+  dependencies:
+    "@napi-rs/triples" "^1.0.3"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.nlark.com/@nodelib/fs.scandir/download/@nodelib/fs.scandir-2.1.5.tgz?cache=0&sync_timestamp=1622792655677&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40nodelib%2Ffs.scandir%2Fdownload%2F%40nodelib%2Ffs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -740,6 +807,14 @@
     yargs "15.4.1"
     yargs-parser "20.0.0"
 
+"@parcel/source-map@^2.0.0-rc.4":
+  version "2.0.0-rc.5"
+  resolved "https://registry.nlark.com/@parcel/source-map/download/@parcel/source-map-2.0.0-rc.5.tgz#4b63693911ace37d4f72c4e94b05494be827024e"
+  integrity sha1-S2NpORGs431PcsTpSwVJS+gnAk4=
+  dependencies:
+    detect-libc "^1.0.3"
+    globby "^11.0.3"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.npm.taobao.org/@sinonjs/commons/download/@sinonjs/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"
@@ -753,6 +828,91 @@
   integrity sha1-JSTq5wxJEO3M+ZsvTm78WJSv97U=
   dependencies:
     "@sinonjs/commons" "^1.7.0"
+
+"@swc/core-android-arm64@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-android-arm64/download/@swc/core-android-arm64-1.2.66.tgz?cache=0&sync_timestamp=1626762998448&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40swc%2Fcore-android-arm64%2Fdownload%2F%40swc%2Fcore-android-arm64-1.2.66.tgz#ce45abb2220684739616443d2c455ba0b8713e1d"
+  integrity sha1-zkWrsiIGhHOWFkQ9LEVboLhxPh0=
+
+"@swc/core-darwin-arm64@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-darwin-arm64/download/@swc/core-darwin-arm64-1.2.66.tgz#804d10c5ccaa359a48eb02047c91f029bdc0618a"
+  integrity sha1-gE0QxcyqNZpI6wIEfJHwKb3AYYo=
+
+"@swc/core-darwin-x64@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-darwin-x64/download/@swc/core-darwin-x64-1.2.66.tgz#47dbe1b8b5ceb145267a419ebaedc9e260ded5fc"
+  integrity sha1-R9vhuLXOsUUmekGeuu3J4mDe1fw=
+
+"@swc/core-freebsd-x64@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-freebsd-x64/download/@swc/core-freebsd-x64-1.2.66.tgz#609b68a9612e92cb7d86ff6f98da5a46103c204f"
+  integrity sha1-YJtoqWEukst9hv9vmNpaRhA8IE8=
+
+"@swc/core-linux-arm-gnueabihf@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-linux-arm-gnueabihf/download/@swc/core-linux-arm-gnueabihf-1.2.66.tgz#df4242f842f096ac4cc581099ae86db517070e91"
+  integrity sha1-30JC+ELwlqxMxYEJmuhttRcHDpE=
+
+"@swc/core-linux-arm64-gnu@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-linux-arm64-gnu/download/@swc/core-linux-arm64-gnu-1.2.66.tgz#3b62f0f9d1af1e549a98480609a85c39bc797941"
+  integrity sha1-O2Lw+dGvHlSamEgGCahcObx5eUE=
+
+"@swc/core-linux-arm64-musl@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-linux-arm64-musl/download/@swc/core-linux-arm64-musl-1.2.66.tgz#272e2ad543308936f46de07a349931844700470e"
+  integrity sha1-Jy4q1UMwiTb0beB6NJkxhEcARw4=
+
+"@swc/core-linux-x64-gnu@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-linux-x64-gnu/download/@swc/core-linux-x64-gnu-1.2.66.tgz#79825533b43f3938985a1846b4bbd22b19f3b92a"
+  integrity sha1-eYJVM7Q/OTiYWhhGtLvSKxnzuSo=
+
+"@swc/core-linux-x64-musl@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-linux-x64-musl/download/@swc/core-linux-x64-musl-1.2.66.tgz#32f89bc35befaca577e2009fe18b37a1e596d6db"
+  integrity sha1-Mvibw1vvrKV34gCf4Ys3oeWW1ts=
+
+"@swc/core-win32-arm64-msvc@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-win32-arm64-msvc/download/@swc/core-win32-arm64-msvc-1.2.66.tgz#829a5b97a3f3283ddff72534488dbdcc0c5246ce"
+  integrity sha1-gppbl6PzKD3f9yU0SI29zAxSRs4=
+
+"@swc/core-win32-ia32-msvc@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-win32-ia32-msvc/download/@swc/core-win32-ia32-msvc-1.2.66.tgz#ccacda98ec99337075e94e3d1c48df86381ecb7b"
+  integrity sha1-zKzamOyZM3B16U49HEjfhjgey3s=
+
+"@swc/core-win32-x64-msvc@^1.2.66":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core-win32-x64-msvc/download/@swc/core-win32-x64-msvc-1.2.66.tgz#71d7e02f929a7dbbe670e8c374d65253b7dd79a9"
+  integrity sha1-cdfgL5KafbvmcOjDdNZSU7fdeak=
+
+"@swc/core@^1.2.54":
+  version "1.2.66"
+  resolved "https://registry.nlark.com/@swc/core/download/@swc/core-1.2.66.tgz?cache=0&sync_timestamp=1626763022530&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40swc%2Fcore%2Fdownload%2F%40swc%2Fcore-1.2.66.tgz#f82409ffadba4a4bc3333b0fd230cbd970a1657e"
+  integrity sha1-+CQJ/626SkvDMzsP0jDL2XChZX4=
+  dependencies:
+    "@node-rs/helper" "^1.0.0"
+  optionalDependencies:
+    "@swc/core-android-arm64" "^1.2.66"
+    "@swc/core-darwin-arm64" "^1.2.66"
+    "@swc/core-darwin-x64" "^1.2.66"
+    "@swc/core-freebsd-x64" "^1.2.66"
+    "@swc/core-linux-arm-gnueabihf" "^1.2.66"
+    "@swc/core-linux-arm64-gnu" "^1.2.66"
+    "@swc/core-linux-arm64-musl" "^1.2.66"
+    "@swc/core-linux-x64-gnu" "^1.2.66"
+    "@swc/core-linux-x64-musl" "^1.2.66"
+    "@swc/core-win32-arm64-msvc" "^1.2.66"
+    "@swc/core-win32-ia32-msvc" "^1.2.66"
+    "@swc/core-win32-x64-msvc" "^1.2.66"
+
+"@swc/helpers@^0.2.10":
+  version "0.2.12"
+  resolved "https://registry.nlark.com/@swc/helpers/download/@swc/helpers-0.2.12.tgz#cd54624dd685f7832b50dd7ce119ddc4eb2585ad"
+  integrity sha1-zVRiTdaF94MrUN184RndxOslha0=
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -1182,7 +1342,7 @@ acorn-globals@^6.0.0:
     acorn "^7.1.1"
     acorn-walk "^7.1.1"
 
-acorn-jsx@^5.3.1:
+acorn-jsx@^5.3.1, acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.nlark.com/acorn-jsx/download/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
   integrity sha1-ftW7VZCLOy8bxVxq8WU7rafweTc=
@@ -1191,6 +1351,11 @@ acorn-walk@^7.1.1:
   version "7.2.0"
   resolved "https://registry.nlark.com/acorn-walk/download/acorn-walk-7.2.0.tgz#0de889a601203909b0fbe07b8938dc21d2e967bc"
   integrity sha1-DeiJpgEgOQmw++B7iTjcIdLpZ7w=
+
+acorn-walk@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.nlark.com/acorn-walk/download/acorn-walk-8.1.1.tgz#3ddab7f84e4a7e2313f6c414c5b7dac85f4e3ebc"
+  integrity sha1-Pdq3+E5KfiMT9sQUxbfayF9OPrw=
 
 acorn@^6.2.1:
   version "6.4.2"
@@ -1202,7 +1367,7 @@ acorn@^7.1.1, acorn@^7.4.0:
   resolved "https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo=
 
-acorn@^8.2.4:
+acorn@^8.2.4, acorn@^8.4.1:
   version "8.4.1"
   resolved "https://registry.nlark.com/acorn/download/acorn-8.4.1.tgz#56c36251fc7cabc7096adc18f05afe814321a28c"
   integrity sha1-VsNiUfx8q8cJatwY8Fr+gUMhoow=
@@ -2356,6 +2521,11 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
+detect-libc@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/detect-libc/download/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
+  integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
+
 detect-newline@^3.0.0:
   version "3.1.0"
   resolved "https://registry.nlark.com/detect-newline/download/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
@@ -2482,6 +2652,14 @@ enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
     memory-fs "^0.5.0"
     tapable "^1.0.0"
 
+enhanced-resolve@^5.8.2:
+  version "5.8.2"
+  resolved "https://registry.nlark.com/enhanced-resolve/download/enhanced-resolve-5.8.2.tgz#15ddc779345cbb73e97c611cd00c01c1e7bf4d8b"
+  integrity sha1-Fd3HeTRcu3PpfGEc0AwBwee/TYs=
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
+
 enquirer@^2.3.5, enquirer@~2.3.6:
   version "2.3.6"
   resolved "https://registry.nlark.com/enquirer/download/enquirer-2.3.6.tgz#2a7fe5dd634a1e4125a975ec994ff5456dc3734d"
@@ -2534,7 +2712,7 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild@^0.12.15, esbuild@^0.12.8:
+esbuild@^0.12.0, esbuild@^0.12.15, esbuild@^0.12.8:
   version "0.12.15"
   resolved "https://registry.nlark.com/esbuild/download/esbuild-0.12.15.tgz?cache=0&sync_timestamp=1625547256642&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fesbuild%2Fdownload%2Fesbuild-0.12.15.tgz#9d99cf39aeb2188265c5983e983e236829f08af0"
   integrity sha1-nZnPOa6yGIJlxZg+mD4jaCnwivA=
@@ -3220,6 +3398,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.nlark.com/hosted-git-info/download/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
   integrity sha1-3/wL+aIcAiCQkPKqaUKeFBTa8/k=
 
+htm@^3.0.4:
+  version "3.1.0"
+  resolved "https://registry.nlark.com/htm/download/htm-3.1.0.tgz#0c305493b60da9f6ed097a2aaf4c994bd85ea022"
+  integrity sha1-DDBUk7YNqfbtCXoqr0yZS9heoCI=
+
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
   resolved "https://registry.nlark.com/html-encoding-sniffer/download/html-encoding-sniffer-2.0.1.tgz#42a6dc4fd33f00281176e8b23759ca4e4fa185f3"
@@ -3409,7 +3592,7 @@ is-ci@^3.0.0:
   dependencies:
     ci-info "^3.1.1"
 
-is-core-module@^2.2.0:
+is-core-module@^2.2.0, is-core-module@^2.5.0:
   version "2.5.0"
   resolved "https://registry.nlark.com/is-core-module/download/is-core-module-2.5.0.tgz#f754843617c70bfd29b7bd87327400cda5c18491"
   integrity sha1-91SENhfHC/0pt72HMnQAzaXBhJE=
@@ -4375,7 +4558,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-magic-string@0.25.7:
+magic-string@0.25.7, magic-string@^0.25.7:
   version "0.25.7"
   resolved "https://registry.nlark.com/magic-string/download/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
   integrity sha1-P0l9b9NMZpxnmNy4IfLvMfVEUFE=
@@ -5983,6 +6166,11 @@ tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"
   resolved "https://registry.nlark.com/tapable/download/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"
   integrity sha1-ofzMBrWNth/XpF2i2kT186Pme6I=
+
+tapable@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/tapable/download/tapable-2.2.0.tgz#5c373d281d9c672848213d0e037d1c4165ab426b"
+  integrity sha1-XDc9KB2cZyhIIT0OA30cQWWrQms=
 
 tar@^6.0.2:
   version "6.1.0"

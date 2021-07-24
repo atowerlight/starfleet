@@ -2,6 +2,8 @@ import { build } from 'esbuild';
 import { BuildExecutorSchema } from './schema';
 import { FsTree } from '@nrwl/tao/src/shared/tree';
 import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
+import esbuildTransform from '@chialab/esbuild-plugin-transform';
+import esbuildSwc from '@chialab/esbuild-plugin-swc';
 
 export default async function runExecutor(
   options: BuildExecutorSchema,
@@ -19,6 +21,11 @@ export default async function runExecutor(
     keepNames: true,
     sourcemap: true,
     logLevel: 'debug',
+    plugins: [
+      esbuildTransform([
+        (await import('@chialab/esbuild-plugin-swc')).default(),
+      ]),
+    ],
   });
 
   return {
