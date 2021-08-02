@@ -1,0 +1,33 @@
+{
+  "root": "libs/esbuild-plugin/swc",
+  "sourceRoot": "libs/esbuild-plugin/swc/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/esbuild-plugin/swc",
+        "tsConfig": "libs/esbuild-plugin/swc/tsconfig.lib.json",
+        "packageJson": "libs/esbuild-plugin/swc/package.json",
+        "main": "libs/esbuild-plugin/swc/src/index.ts",
+        "assets": ["libs/esbuild-plugin/swc/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/esbuild-plugin/swc/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/esbuild-plugin/swc"],
+      "options": {
+        "jestConfig": "libs/esbuild-plugin/swc/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

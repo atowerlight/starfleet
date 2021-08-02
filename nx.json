@@ -19,6 +19,9 @@
     }
   },
   "projects": {
+    "esbuild-plugin-source-map": {
+      "tags": []
+    },
     "nx-node": {
       "tags": []
     },

@@ -1,0 +1,32 @@
+{
+  "root": "libs/esbuild-plugin/source-map",
+  "sourceRoot": "libs/esbuild-plugin/source-map/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/esbuild-plugin/source-map",
+        "tsConfig": "libs/esbuild-plugin/source-map/tsconfig.lib.json",
+        "packageJson": "libs/esbuild-plugin/source-map/package.json",
+        "main": "libs/esbuild-plugin/source-map/src/index.ts",
+        "assets": ["libs/esbuild-plugin/source-map/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/esbuild-plugin/source-map/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/esbuild-plugin/source-map"],
+      "options": {
+        "jestConfig": "libs/esbuild-plugin/source-map/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
