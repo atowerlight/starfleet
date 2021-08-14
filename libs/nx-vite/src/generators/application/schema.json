@@ -29,7 +29,5 @@
       "description": "Add tags to the application (used for linting)"
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": ["name"]
 }
