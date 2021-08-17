@@ -54,7 +54,7 @@ export default function (swcOptions: SwcOptions = {}) {
           }
         );
 
-        // TODO: 每次都 finalizeEntry 性能问题
+        // 如果在环境中那么会直接跳过，全部转换完成再合并 sourcemap
         return finalizeEntry(build, args.path);
       });
     },

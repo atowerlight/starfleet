@@ -1,6 +1,12 @@
 import path from 'path';
 import { readFile } from 'fs/promises';
-import type { BuildOptions, OnLoadResult, PluginBuild, Plugin } from 'esbuild';
+import type {
+  BuildOptions,
+  OnLoadOptions,
+  OnLoadResult,
+  PluginBuild,
+} from 'esbuild';
+import { Plugin } from 'esbuild';
 import {
   createPipeline,
   finalize,
@@ -31,6 +37,12 @@ export async function finalizeEntry(
   build: PluginBuild,
   filePath: string
 ): Promise<OnLoadResult | undefined> {
+  const options = (build.initialOptions as BuildTransformOptions).transform;
+  // 如果在环境里面那么就交给环境来合并 sourcemap
+  if (options) {
+    return;
+  }
+
   const entry = await getEntry(build, filePath);
   const { code, loader } = await finalize(entry, {
     sourcemap: 'inline',
@@ -44,10 +56,16 @@ export async function finalizeEntry(
   };
 }
 
+type LoadCallbackOrigin = Parameters<PluginBuild['onLoad']>[1];
+
+interface LoadCallback extends LoadCallbackOrigin {
+  options: OnLoadOptions;
+}
+
 export default function (plugins: Plugin[] = []) {
   const plugin: Plugin = {
     name: 'transform',
-    setup(build) {
+    setup: (build) => {
       const store: Store = new Map();
       const options = build.initialOptions;
 
@@ -59,14 +77,48 @@ export default function (plugins: Plugin[] = []) {
         },
       });
 
+      const onLoadList: LoadCallback[] = [];
+
+      // 下面都是同步代码能保证顺序
       for (let i = 0; i < plugins.length; i++) {
         plugins[i].setup({
           initialOptions: build.initialOptions,
           onStart: build.onStart.bind(build),
           onEnd: build.onEnd.bind(build),
           onResolve: build.onResolve.bind(build),
-          onLoad: build.onLoad.bind(build),
+          onLoad(options, callback: LoadCallback) {
+            callback.options = options;
+            onLoadList.push(callback);
+          },
         });
+      }
+
+      if (onLoadList.length) {
+        for (let i = 0; i < onLoadList.length; i++) {
+          const onLoad = onLoadList[i];
+          build.onLoad(onLoad.options, async (args) => {
+            const entry = await getEntry(build, args.path);
+
+            await onLoad(args);
+            if (entry.code === entry.contents) {
+              return {
+                contents: entry.code,
+                loader: entry.loader,
+              };
+            }
+
+            const { code, loader } = await finalize(entry, {
+              sourcemap: 'inline',
+              source: path.basename(args.path),
+              sourcesContent: options.sourcesContent,
+            });
+
+            return {
+              contents: code,
+              loader,
+            };
+          });
+        }
       }
     },
   };
