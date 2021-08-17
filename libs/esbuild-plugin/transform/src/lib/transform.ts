@@ -1,7 +1,6 @@
 import path from 'path';
 import { readFile } from 'fs/promises';
-import type { BuildOptions, OnLoadResult, PluginBuild } from 'esbuild';
-import { Plugin } from 'esbuild';
+import type { BuildOptions, OnLoadResult, PluginBuild, Plugin } from 'esbuild';
 import {
   createPipeline,
   finalize,
