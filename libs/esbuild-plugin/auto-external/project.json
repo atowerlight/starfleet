@@ -1,0 +1,33 @@
+{
+  "root": "libs/esbuild-plugin/auto-external",
+  "sourceRoot": "libs/esbuild-plugin/auto-external/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/esbuild-plugin/auto-external",
+        "tsConfig": "libs/esbuild-plugin/auto-external/tsconfig.lib.json",
+        "packageJson": "libs/esbuild-plugin/auto-external/package.json",
+        "main": "libs/esbuild-plugin/auto-external/src/index.ts",
+        "assets": ["libs/esbuild-plugin/auto-external/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/esbuild-plugin/auto-external/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/esbuild-plugin/auto-external"],
+      "options": {
+        "jestConfig": "libs/esbuild-plugin/auto-external/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -2,6 +2,7 @@
   "root": "libs/esbuild-plugin/swc",
   "sourceRoot": "libs/esbuild-plugin/swc/src",
   "projectType": "library",
+  "updateBuildableProjectDepsInPackageJson": false,
   "targets": {
     "build": {
       "executor": "@nrwl/node:package",

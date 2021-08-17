@@ -2,6 +2,9 @@
   "name": "starfleet",
   "version": "0.0.0",
   "license": "MIT",
+  "workspaces": [
+    "./dist/**"
+  ],
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
@@ -27,11 +30,12 @@
   },
   "private": true,
   "dependencies": {
+    "@parcel/source-map": "^2.0.0-rc.6",
+    "@swc/core": "^1.2.78",
+    "magic-string": "^0.25.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@chialab/esbuild-plugin-swc": "^0.9.12",
-    "@chialab/esbuild-plugin-transform": "^0.9.6",
     "@nrwl/cli": "12.7.1",
     "@nrwl/devkit": "12.7.1",
     "@nrwl/eslint-plugin-nx": "12.7.1",

@@ -2,6 +2,7 @@
   "root": "libs/esbuild-plugin/source-map",
   "sourceRoot": "libs/esbuild-plugin/source-map/src",
   "projectType": "library",
+  "updateBuildableProjectDepsInPackageJson": false,
   "targets": {
     "build": {
       "executor": "@nrwl/node:package",

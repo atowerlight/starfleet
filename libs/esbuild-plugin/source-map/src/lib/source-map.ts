@@ -1,4 +1,4 @@
-import { promises } from 'fs';
+import { readFile } from 'fs/promises';
 import path from 'path';
 import MagicString from 'magic-string';
 import esbuild from 'esbuild';
@@ -7,7 +7,6 @@ import jsx from 'acorn-jsx';
 import { simple as walk } from 'acorn-walk';
 import SourceMapNode, { VLQMap as SourceMap } from '@parcel/source-map';
 
-const { readFile } = promises;
 const SOURCEMAP_REGEX =
   /(?:(\/\*+[\s\S]*?sourceMappingURL\s*=)([\s\S]*?)(\*\/))|(?:(\/\/.*?sourceMappingURL\s*=)(.*?)([\r\n]))/;
 
@@ -17,29 +16,10 @@ export { walk };
 
 export function parse(contents: string) {
   return Parser.parse(contents, {
-    ecmaVersion: 'latest',
+    ecmaVersion: 2020,
     sourceType: 'module',
     locations: true,
   });
-}
-
-export function getOffsetFromLocation(
-  code: string,
-  line: number,
-  column: number
-) {
-  let offest = 0;
-
-  const lines = code.split('\n');
-  for (let i = 0; i < line; i++) {
-    if (i === line - 1) {
-      offest += column;
-      return offest;
-    }
-    offest += lines[i].length + 1;
-  }
-
-  return -1;
 }
 
 export function parseSourcemap(map: string): SourceMap {
@@ -122,10 +102,9 @@ export type TransformResult = {
   code?: string | undefined;
   map?: SourceMap | null | undefined;
   loader?: esbuild.Loader | undefined;
-  target?: string | undefined;
 };
 
-export type TransformCallack = (
+export type TransformCallback = (
   data: {
     ast: acorn.Node;
     magicCode: MagicString;
@@ -137,7 +116,7 @@ export type TransformCallack = (
 export async function transform(
   contents: string,
   options: TransformOptions,
-  callback: TransformCallack
+  callback: TransformCallback
 ): Promise<TransformResult> {
   let magicCode: MagicString | undefined;
   let ast: acorn.Node | undefined;
@@ -177,24 +156,11 @@ export async function transform(
   );
 }
 
-export const TARGETS = {
-  unknown: 'unknown',
-  typescript: 'typescript',
-  es2020: 'es2020',
-  es2019: 'es2019',
-  es2018: 'es2018',
-  es2017: 'es2017',
-  es2016: 'es2016',
-  es2015: 'es2015',
-  es5: 'es5',
-};
-
 export type Pipeline = {
   contents: string;
   code: string;
   sourceMaps: SourceMap[] | null;
-  target: string;
-  loader: import('esbuild').Loader;
+  loader: esbuild.Loader;
 };
 
 export async function createPipeline(
@@ -210,15 +176,12 @@ export async function createPipeline(
     }
   }
 
-  const target =
-    source && source.match(/\.tsx?$/) ? TARGETS.typescript : TARGETS.unknown;
   const loader = source && source.match(/\.ts$/) ? 'ts' : 'tsx';
 
   return {
     contents,
     code: contents,
     sourceMaps: sourcemap ? sourceMaps : null,
-    target,
     loader,
   } as Pipeline;
 }
@@ -226,9 +189,9 @@ export async function createPipeline(
 export async function pipe(
   pipeline: Pipeline,
   options: TransformOptions,
-  callback: TransformCallack
+  callback: TransformCallback
 ) {
-  const { code, map, loader, target } = await transform(
+  const { code, map, loader } = await transform(
     pipeline.code,
     {
       sourcemap: !!pipeline.sourceMaps,
@@ -247,34 +210,6 @@ export async function pipe(
   if (loader) {
     pipeline.loader = loader;
   }
-
-  if (target) {
-    pipeline.target = target;
-  }
-}
-
-export function createTypeScriptTransform(
-  config: esbuild.TransformOptions = {}
-): TransformCallack {
-  return async function transpileTypescript({ code }, options) {
-    const { code: finalCode, map } = await esbuild.transform(code, {
-      tsconfigRaw: {},
-      sourcemap: true,
-      format: 'esm',
-      target: TARGETS.es2020,
-      sourcefile: options.source,
-      loader: config.loader,
-      jsxFactory: config.jsxFactory,
-      jsxFragment: config.jsxFragment,
-    });
-
-    return {
-      code: finalCode,
-      map: parseSourcemap(map),
-      target: TARGETS.es2020,
-      loader: 'js',
-    };
-  };
 }
 
 export function inlineSourcemap(code: string, sourceMap: SourceMap) {

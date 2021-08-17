@@ -12,21 +12,36 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "esnext",
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@starfleet/esbuild-plugin-auto-external": [
+        "libs/esbuild-plugin/auto-external/src/index.ts"
+      ],
       "@starfleet/esbuild-plugin-source-map": [
         "libs/esbuild-plugin/source-map/src/index.ts"
       ],
-      "@starfleet/esbuild-plugin-swc": ["libs/esbuild-plugin/swc/src/index.ts"],
+      "@starfleet/esbuild-plugin-swc": [
+        "libs/esbuild-plugin/swc/src/index.ts"
+      ],
       "@starfleet/esbuild-plugin-transform": [
         "libs/esbuild-plugin/transform/src/index.ts"
       ],
-      "@starfleet/nx-node": ["libs/nx-node/src/index.ts"],
-      "@starfleet/nx-vite": ["libs/nx-vite/src/index.ts"]
+      "@starfleet/nx-node": [
+        "libs/nx-node/src/index.ts"
+      ],
+      "@starfleet/nx-vite": [
+        "libs/nx-vite/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

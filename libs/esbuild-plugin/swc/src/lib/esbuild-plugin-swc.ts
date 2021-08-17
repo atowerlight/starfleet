@@ -1,129 +1,62 @@
 import path from 'path';
-import swc from '@swc/core';
-import { resolve } from '@chialab/node-resolve';
-import {
-  TARGETS,
-  parseSourcemap,
-  createTypeScriptTransform,
-  pipe,
-} from '@starfleet/esbuild-plugin-source-map';
-import {
-  getEntry,
-  finalizeEntry,
-  createFilter,
-} from '@starfleet/esbuild-plugin-transform';
-import type { Plugin } from 'esbuild';
+import type { JscTarget, Options as SwcOptions } from '@swc/core';
+import * as swc from '@swc/core';
+import { parseSourcemap, pipe } from '@starfleet/esbuild-plugin-source-map';
+import { finalizeEntry, getEntry } from '@starfleet/esbuild-plugin-transform';
 
-type PluginOptions = {
-  plugins?: import('@swc/core').Plugin[];
-  pipe?: boolean;
-  cache?: Map<string, any>;
-};
+import type { Plugin as EsbuildPlugin } from 'esbuild';
 
-export default function ({ plugins = [] }: PluginOptions = {}) {
-  const plugin: Plugin = {
+export default function (swcOptions: SwcOptions = {}) {
+  const plugin: EsbuildPlugin = {
     name: 'swc',
     setup(build) {
-      const options = build.initialOptions;
+      const esbuildOptions = build.initialOptions;
+      build.onLoad({ filter: /\.tsx?$/ }, async (args) => {
+        const entry = await getEntry(build, args.path);
 
-      build.onResolve({ filter: /@swc\/helpers/ }, async () => ({
-        path: await resolve('@swc/helpers', import.meta.url),
-      }));
-      build.onLoad(
-        { filter: createFilter(build), namespace: 'file' },
-        async (args) => {
-          if (
-            args.path.includes('@swc/helpers/') ||
-            args.path.includes('regenerator-runtime')
-          ) {
-            return;
-          }
-
-          const entry = args.pluginData || (await getEntry(build, args.path));
-
-          if (entry.target === TARGETS.typescript) {
-            await pipe(
-              entry,
-              {
-                source: path.basename(args.path),
-                sourcesContent: options.sourcesContent,
-              },
-              createTypeScriptTransform({
-                loader: entry.loader,
-                jsxFactory: options.jsxFactory,
-                jsxFragment: options.jsxFragment,
-              })
-            );
-          }
-
-          await pipe(
-            entry,
-            {
-              source: path.basename(args.path),
-              sourcesContent: options.sourcesContent,
-            },
-            async ({ code }) => {
-              const config: import('@swc/core').Options = {
-                filename: args.path,
-                sourceFileName: args.path,
-                sourceMaps: true,
-                jsc: {
-                  parser: {
-                    syntax: 'ecmascript',
-                    jsx: true,
-                    dynamicImport: true,
-                    privateMethod: true,
-                    functionBind: true,
-                    exportDefaultFrom: true,
-                    exportNamespaceFrom: true,
-                    decoratorsBeforeExport: true,
-                    importMeta: true,
-                    decorators: true,
-                  },
-                  externalHelpers: true,
-                  target:
-                    (options.target as import('@swc/core').JscTarget) ||
-                    'es2020',
-                  transform: {
-                    optimizer: undefined,
-                  },
+        await pipe(
+          entry,
+          {
+            source: path.basename(args.path),
+            sourcesContent: esbuildOptions.sourcesContent,
+          },
+          async ({ code }) => {
+            const config: SwcOptions = {
+              filename: args.path,
+              sourceFileName: args.path,
+              sourceMaps: true,
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  decorators: true,
+                  dynamicImport: true,
                 },
-              };
+                keepClassNames: true,
+                // externalHelpers: true,
+                target: (esbuildOptions.target as JscTarget) || 'es2020',
+                transform: {
+                  legacyDecorator: true,
+                  decoratorMetadata: true,
+                  optimizer: undefined,
+                },
+              },
+              ...swcOptions,
+            };
 
-              if (options.target === 'es5') {
-                config.env = {
-                  targets: {
-                    ie: '11',
-                  },
-                  shippedProposals: true,
-                };
-                entry.target = TARGETS.es5;
-              }
+            const result = await swc.transform(code, config);
+            const map = parseSourcemap(result.map);
 
-              if (options.jsxFactory) {
-                plugins.push(
-                  (await import('@chialab/swc-plugin-htm')).plugin({
-                    tag: 'html',
-                    pragma: options.jsxFactory,
-                  })
-                );
-              }
+            return {
+              code: result.code,
+              map,
+            };
+          }
+        );
 
-              config.plugin = swc.plugins(plugins);
-
-              const result = await swc.transform(code, config);
-              const map = parseSourcemap(/** @type {string} */ result.map);
-
-              return {
-                code: result.code,
-                map,
-              };
-            }
-          );
-
-          return finalizeEntry(build, args.path);
-        }
-      );
+        // TODO: 每次都 finalizeEntry 性能问题
+        return finalizeEntry(build, args.path);
+      });
     },
   };
 

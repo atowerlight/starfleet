@@ -2,6 +2,7 @@
   "root": "libs/esbuild-plugin/transform",
   "sourceRoot": "libs/esbuild-plugin/transform/src",
   "projectType": "library",
+  "updateBuildableProjectDepsInPackageJson": false,
   "targets": {
     "build": {
       "executor": "@nrwl/node:package",
