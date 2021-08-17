@@ -8,7 +8,7 @@ import auto from '@starfleet/esbuild-plugin-auto-external';
 import transform from '@starfleet/esbuild-plugin-transform';
 import swc from '@starfleet/esbuild-plugin-swc';
 
-export default async function runExecutor(
+export default async function* runExecutor(
   options: BuildExecutorSchema,
   context: ExecutorContext
 ) {
@@ -27,7 +27,7 @@ export default async function runExecutor(
     plugins: [auto(), transform([swc()])],
   });
 
-  return {
+  yield {
     success: true,
   };
 }

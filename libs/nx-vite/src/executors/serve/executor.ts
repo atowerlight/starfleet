@@ -22,7 +22,7 @@ export default async function* runExecutor(
     };
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    await new Promise<{ success: boolean }>(() => {});
+    await new Promise(() => {});
   } catch (e) {
     throw new Error(`Could not start production server.`);
   }
