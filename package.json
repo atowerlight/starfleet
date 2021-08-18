@@ -32,7 +32,9 @@
   "dependencies": {
     "@parcel/source-map": "^2.0.0-rc.6",
     "@swc/core": "^1.2.78",
+    "estree-walker": "^2.0.2",
     "magic-string": "^0.25.7",
+    "periscopic": "^2.0.3",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
@@ -45,6 +47,7 @@
     "@nrwl/nx-plugin": "12.7.1",
     "@nrwl/tao": "12.7.1",
     "@nrwl/workspace": "12.7.1",
+    "@types/estree": "^0.0.50",
     "@types/jest": "26.0.8",
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "4.28.5",
