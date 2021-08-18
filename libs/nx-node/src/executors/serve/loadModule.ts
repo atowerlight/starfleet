@@ -158,9 +158,7 @@ async function instantiateModule(
 function nodeRequire(id: string, importer: string) {
   // TODO: 自己控制 resolve
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const mod = require(require.resolve(id, {
-    paths: [importer, process.cwd()],
-  }));
+  const mod = require(resolve(id, importer));
 
   const defaultExport = mod.__esModule ? mod.default : mod;
   // rollup-style default import interop for cjs
@@ -170,4 +168,19 @@ function nodeRequire(id: string, importer: string) {
       return mod[prop];
     },
   });
+}
+
+const resolveCache = new Map<string, string>();
+
+function resolve(id: string, importer: string) {
+  const key = id + importer;
+  const cached = resolveCache.get(key);
+  if (cached) {
+    return cached;
+  }
+  const resolved = require.resolve(id, {
+    paths: [process.cwd(), importer],
+  });
+  resolveCache.set(key, resolved);
+  return resolved;
 }
