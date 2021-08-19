@@ -77,8 +77,11 @@ async function instantiateModule(
     result.deps!.map((dep) => {
       // 去掉依赖，依赖用 nodejs 自己的 require
       if (!isExternal(dep)) {
+        if (dep[0] === '.') {
+          dep = path.posix.resolve(path.dirname(url), dep);
+        }
         // 递归
-        return LoadModuleInside(dep, context, urlStack.concat(url));
+        return LoadModuleInside(dep + '.ts', context, urlStack.concat(url));
       }
     })
   );
@@ -107,7 +110,7 @@ async function instantiateModule(
     if (isExternal(dep)) {
       return Promise.resolve(nodeRequire(dep, mod.url));
     } else {
-      if (dep.startsWith('.')) {
+      if (dep[0] === '.') {
         dep = path.posix.resolve(path.dirname(url), dep);
       }
       // 动态 import 并没有处理，需要在运行时编译

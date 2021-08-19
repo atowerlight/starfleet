@@ -5,6 +5,7 @@
     "esbuild-plugin-source-map": "libs/esbuild-plugin/source-map",
     "esbuild-plugin-swc": "libs/esbuild-plugin/swc",
     "esbuild-plugin-transform": "libs/esbuild-plugin/transform",
+    "load-module": "libs/load-module",
     "nx-node": {
       "root": "libs/nx-node",
       "sourceRoot": "libs/nx-node/src",

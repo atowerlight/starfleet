@@ -1,0 +1,33 @@
+{
+  "root": "libs/load-module",
+  "sourceRoot": "libs/load-module/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/load-module",
+        "tsConfig": "libs/load-module/tsconfig.lib.json",
+        "packageJson": "libs/load-module/package.json",
+        "main": "libs/load-module/src/index.ts",
+        "assets": ["libs/load-module/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/load-module/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/load-module"],
+      "options": {
+        "jestConfig": "libs/load-module/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -22,6 +22,8 @@ export async function transformRequest(
     return cached;
   }
 
+  // console.log(url);
+
   const transformResult = await transformFile(url, {
     filename: url,
     sourceFileName: url,
