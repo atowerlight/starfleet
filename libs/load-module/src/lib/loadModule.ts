@@ -81,6 +81,12 @@ async function instantiateModule(
           dep = path.posix.resolve(path.dirname(url), dep);
         }
         // 递归
+        // TODO: 路径的处理特别的简陋
+        //    需要符合 nodejs 标准, 需要达到
+        //    - 对于不同后缀进行尝试
+        //    - index.js 自动寻找
+        //    - package.json ??
+        //    - ...
         return LoadModuleInside(dep + '.ts', context, urlStack.concat(url));
       }
     })
@@ -114,7 +120,7 @@ async function instantiateModule(
         dep = path.posix.resolve(path.dirname(url), dep);
       }
       // 动态 import 并没有处理，需要在运行时编译
-      return LoadModuleInside(dep, context, urlStack.concat(url));
+      return LoadModuleInside(dep + '.ts', context, urlStack.concat(url));
     }
   };
 
@@ -190,6 +196,7 @@ function resolve(id: string, importer: string) {
   if (cached) {
     return cached;
   }
+  // TODO: require.resolve 的 paths 还需要观察，或者自己实现 resolve 算法
   const resolved = require.resolve(id, {
     paths: [process.cwd(), importer],
   });
