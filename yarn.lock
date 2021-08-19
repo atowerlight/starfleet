@@ -1830,9 +1830,9 @@ chokidar@^2.1.8:
   optionalDependencies:
     fsevents "^1.2.7"
 
-chokidar@^3.4.1, chokidar@^3.4.2, chokidar@^3.5.1:
+chokidar@^3.4.1, chokidar@^3.4.2, chokidar@^3.5.1, chokidar@^3.5.2:
   version "3.5.2"
-  resolved "https://registry.nlark.com/chokidar/download/chokidar-3.5.2.tgz?cache=0&sync_timestamp=1623763736136&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fchokidar%2Fdownload%2Fchokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
+  resolved "https://registry.nlark.com/chokidar/download/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
   integrity sha1-26OXb8rbAW9m/TZQIdkWANAcHnU=
   dependencies:
     anymatch "~3.1.2"
@@ -2625,11 +2625,6 @@ estree-walker@^2.0.2:
   version "2.0.2"
   resolved "https://registry.nlark.com/estree-walker/download/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha1-UvAQF4wqTBF6d1fP6UKtt9LaTKw=
-
-estree-walker@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.nlark.com/estree-walker/download/estree-walker-3.0.0.tgz#ca4b284de9dffb255288c76a44870b360faf14f9"
-  integrity sha1-yksoTenf+yVSiMdqRIcLNg+vFPk=
 
 esutils@^2.0.2:
   version "2.0.3"
@@ -3489,13 +3484,6 @@ is-reference@^1.1.4:
   version "1.2.1"
   resolved "https://registry.nlark.com/is-reference/download/is-reference-1.2.1.tgz#8b2dac0b371f4bc994fdeaba9eb542d03002d0b7"
   integrity sha1-iy2sCzcfS8mU/eq6nrVC0DAC0Lc=
-  dependencies:
-    "@types/estree" "*"
-
-is-reference@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.nlark.com/is-reference/download/is-reference-3.0.0.tgz#b1380c03d96ddf7089709781e3208fceb0c92cd6"
-  integrity sha1-sTgMA9lt33CJcJeB4yCPzrDJLNY=
   dependencies:
     "@types/estree" "*"
 
@@ -4957,14 +4945,6 @@ periscopic@^2.0.3:
   dependencies:
     estree-walker "^2.0.2"
     is-reference "^1.1.4"
-
-periscopic@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.nlark.com/periscopic/download/periscopic-3.0.4.tgz#b3fbed0d1bc844976b977173ca2cd4a0ef4fa8d1"
-  integrity sha1-s/vtDRvIRJdrl3FzyizUoO9PqNE=
-  dependencies:
-    estree-walker "^3.0.0"
-    is-reference "^3.0.0"
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.3.0"

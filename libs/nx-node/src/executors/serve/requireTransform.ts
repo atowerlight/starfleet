@@ -27,7 +27,7 @@ export async function requireTransform(
   code: string,
   inMap?: string,
   url?: string
-): Promise<TransformResult | null> {
+): Promise<TransformResult | undefined> {
   const s = new MagicString(code);
 
   const ast = Parser.parse(code, {

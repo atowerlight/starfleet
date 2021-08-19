@@ -1,4 +1,4 @@
-import { moduleGraph } from './moduleGraph';
+import { moduleGraph, watch } from './moduleGraph';
 import { transformRequest } from './transformRequest';
 import path from 'path';
 import {
@@ -9,7 +9,7 @@ import {
   ssrModuleExportsKey,
 } from './requireTransform';
 
-type SSRModule = Record<string, unknown>;
+export type SSRModule = Record<string, unknown>;
 interface SSRContext {
   global: NodeJS.Global;
 }
@@ -17,14 +17,14 @@ interface SSRContext {
 const pendingModules = new Map<string, Promise<SSRModule>>();
 
 // 自动转换代码
-export async function LoadModule(
+export function LoadModuleInside(
   url: string,
   context: SSRContext = { global },
   urlStack: string[] = []
 ): Promise<SSRModule> {
   if (urlStack.includes(url)) {
     console.warn(`Circular dependency: ${urlStack.join(' -> ')} -> ${url}`);
-    return {};
+    return Promise.resolve({});
   }
 
   // 防止重复
@@ -41,9 +41,18 @@ export async function LoadModule(
   return modulePromise;
 }
 
+interface LoadModuleReturn extends Promise<SSRModule> {
+  [Symbol.asyncIterator]: () => AsyncGenerator<SSRModule, void, unknown>;
+}
+
+export function LoadModule(url: string) {
+  const obj = LoadModuleInside(url) as LoadModuleReturn;
+  obj[Symbol.asyncIterator] = watch(url);
+  return obj;
+}
+
 async function instantiateModule(
   url: string,
-  // server: ViteDevServer,
   context: SSRContext = { global },
   urlStack: string[] = []
 ): Promise<SSRModule> {
@@ -69,7 +78,7 @@ async function instantiateModule(
       // 去掉依赖，依赖用 nodejs 自己的 require
       if (!isExternal(dep)) {
         // 递归
-        return LoadModule(dep, context, urlStack.concat(url));
+        return LoadModuleInside(dep, context, urlStack.concat(url));
       }
     })
   );
@@ -102,7 +111,7 @@ async function instantiateModule(
         dep = path.posix.resolve(path.dirname(url), dep);
       }
       // 动态 import 并没有处理，需要在运行时编译
-      return LoadModule(dep, context, urlStack.concat(url));
+      return LoadModuleInside(dep, context, urlStack.concat(url));
     }
   };
 

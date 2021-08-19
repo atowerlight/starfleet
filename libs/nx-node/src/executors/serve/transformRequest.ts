@@ -12,9 +12,9 @@ export interface TransformResult {
 
 export async function transformRequest(
   url: string
-): Promise<TransformResult | null> {
+): Promise<TransformResult | undefined> {
   // 有可能没有
-  const module = await moduleGraph.getModuleByUrl(url);
+  const module = moduleGraph.getModuleByUrl(url);
 
   const cached = module?.ssrTransformResult;
 
