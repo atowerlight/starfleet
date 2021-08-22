@@ -32,6 +32,7 @@
   "dependencies": {
     "@parcel/source-map": "^2.0.0-rc.6",
     "@swc/core": "^1.2.78",
+    "acorn": "^8.4.1",
     "chokidar": "^3.5.2",
     "estree-walker": "^2.0.2",
     "magic-string": "^0.25.7",

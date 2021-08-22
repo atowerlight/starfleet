@@ -107,8 +107,11 @@ async function instantiateModule(
       // 这里不能使用万能的 import(${dep}).default 因为其是异步代码，与 require 语义不同
       return nodeRequire(dep, mod.url);
     } else {
+      if (dep[0] === '.') {
+        dep = path.posix.resolve(path.dirname(url), dep);
+      }
       // 静态分析完成并准备好了
-      return moduleGraph.urlToModuleMap.get(dep)?.ssrModule;
+      return moduleGraph.urlToModuleMap.get(dep + '.ts')?.ssrModule;
     }
   };
 

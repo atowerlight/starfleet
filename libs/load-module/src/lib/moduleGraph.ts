@@ -11,7 +11,6 @@ export class ModuleNode {
    */
   url: string;
   importers = new Set<ModuleNode>();
-  importedModules = new Set<ModuleNode>();
   ssrTransformResult: TransformResult | undefined = undefined;
   ssrModule: Record<string, unknown> | undefined = undefined;
 
@@ -88,7 +87,9 @@ export function watch(url: string) {
 
     for await (const file of chokidarWatch(watcher)) {
       const normalizeFile = normalizePath(file);
-      // 删除 file
+      // 删除入口
+      moduleGraph.onFileChange(url);
+      // 删除对于 file
       moduleGraph.onFileChange(normalizeFile);
 
       // 每次更新创建新的 promise 并 yield 出去
