@@ -99,6 +99,7 @@
           "executor": "@nrwl/node:package",
           "outputs": ["{options.outputPath}"],
           "options": {
+            "updateBuildableProjectDepsInPackageJson": false,
             "outputPath": "dist/libs/nx-vite",
             "tsConfig": "libs/nx-vite/tsconfig.lib.json",
             "packageJson": "libs/nx-vite/package.json",

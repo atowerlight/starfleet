@@ -2,6 +2,7 @@ import { ServeExecutorSchema } from './schema';
 import { FsTree } from '@nrwl/tao/src/shared/tree';
 import { ExecutorContext } from '@nrwl/tao/src/shared/workspace';
 import { createServer } from 'vite';
+import { calcAlias } from '../../utils/calcAlias';
 
 export default async function* runExecutor(
   options: ServeExecutorSchema,
@@ -13,6 +14,9 @@ export default async function* runExecutor(
   try {
     const server = await createServer({
       root: tree.root + '/' + appRoot,
+      resolve: {
+        alias: calcAlias(tree, appRoot),
+      },
     });
 
     await server.listen();

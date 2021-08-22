@@ -8,7 +8,7 @@ import {
 import { setDefaultCollection } from '@nrwl/workspace/src/utilities/set-default-collection';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 import { InitGeneratorSchema } from './schema';
-import { nxVersion, viteVersion } from '../../utils/versions';
+import { nxVersion } from '../../utils/versions';
 
 function updateDependencies(tree: Tree) {
   // 先删除了再添加

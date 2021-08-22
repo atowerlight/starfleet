@@ -18,6 +18,17 @@ describe('nx-vite e2e', () => {
     // expect(result.stdout).toContain('Executor ran');
   }, 30000);
 
+  it('should create nx-vite lib', async () => {
+    const plugin = uniq('nx-vite');
+    ensureNxProject('@starfleet/nx-vite', 'dist/libs/nx-vite');
+    await runNxCommandAsync(
+      `generate @starfleet/nx-vite:lib ${plugin} --importPath @st/test`
+    );
+
+    // const result = await runNxCommandAsync(`build ${plugin}`);
+    // expect(result.stdout).toContain('Executor ran');
+  }, 300000);
+
   describe('--directory', () => {
     it('should create src in the specified directory', async () => {
       const plugin = uniq('nx-vite');
