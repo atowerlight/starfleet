@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "esbuild-plugin-auto-external": "libs/esbuild-plugin/auto-external",
+    "esbuild-plugin-native-node": "libs/esbuild-plugin/native-node",
     "esbuild-plugin-source-map": "libs/esbuild-plugin/source-map",
     "esbuild-plugin-swc": "libs/esbuild-plugin/swc",
     "esbuild-plugin-transform": "libs/esbuild-plugin/transform",

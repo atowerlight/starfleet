@@ -1,0 +1,33 @@
+{
+  "root": "libs/esbuild-plugin/native-node",
+  "sourceRoot": "libs/esbuild-plugin/native-node/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/esbuild-plugin/native-node",
+        "tsConfig": "libs/esbuild-plugin/native-node/tsconfig.lib.json",
+        "packageJson": "libs/esbuild-plugin/native-node/package.json",
+        "main": "libs/esbuild-plugin/native-node/src/index.ts",
+        "assets": ["libs/esbuild-plugin/native-node/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/esbuild-plugin/native-node/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/esbuild-plugin/native-node"],
+      "options": {
+        "jestConfig": "libs/esbuild-plugin/native-node/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

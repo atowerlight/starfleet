@@ -20,6 +20,9 @@
       "@starfleet/esbuild-plugin-auto-external": [
         "libs/esbuild-plugin/auto-external/src/index.ts"
       ],
+      "@starfleet/esbuild-plugin-native-node": [
+        "libs/esbuild-plugin/native-node/src/index.ts"
+      ],
       "@starfleet/esbuild-plugin-source-map": [
         "libs/esbuild-plugin/source-map/src/index.ts"
       ],
