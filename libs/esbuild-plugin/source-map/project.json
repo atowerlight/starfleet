@@ -19,7 +19,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/esbuild-plugin/source-map/**/*.ts"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -29,5 +30,6 @@
         "passWithNoTests": true
       }
     }
-  }
+  },
+  "tags": []
 }

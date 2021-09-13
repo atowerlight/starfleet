@@ -683,47 +683,49 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@nrwl/cli@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/cli/download/@nrwl/cli-12.8.0.tgz#51527fbabe3248cf4f910329e472665728312064"
-  integrity sha1-UVJ/ur4ySM9PkQMp5HJmVygxIGQ=
+"@nrwl/cli@*", "@nrwl/cli@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/cli/download/@nrwl/cli-12.9.0.tgz#f5fccd973006ad2802d7c823b28820ac1fa6c27c"
+  integrity sha1-9fzNlzAGrSgC18gjsoggrB+mwnw=
   dependencies:
-    "@nrwl/tao" "12.8.0"
+    "@nrwl/tao" "12.9.0"
     chalk "4.1.0"
     v8-compile-cache "2.3.0"
     yargs "15.4.1"
     yargs-parser "20.0.0"
 
-"@nrwl/devkit@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/devkit/download/@nrwl/devkit-12.8.0.tgz#7bdce01d8ee39b206e503ca18c3223fd424515e7"
-  integrity sha1-e9zgHY7jmyBuUDyhjDIj/UJFFec=
+"@nrwl/devkit@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/devkit/download/@nrwl/devkit-12.9.0.tgz#fbf6eb715d1deb22fa919bceb3dff7a5c990d415"
+  integrity sha1-+/brcV0d6yL6kZvOs9/3pcmQ1BU=
   dependencies:
-    "@nrwl/tao" "12.8.0"
+    "@nrwl/tao" "12.9.0"
     ejs "^3.1.5"
     ignore "^5.0.4"
     rxjs "^6.5.4"
     semver "7.3.4"
     tslib "^2.0.0"
 
-"@nrwl/eslint-plugin-nx@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/eslint-plugin-nx/download/@nrwl/eslint-plugin-nx-12.8.0.tgz#264cb3b73d538e9f2205eda282ec92e421eed44c"
-  integrity sha1-Jkyztz1Tjp8iBe2iguyS5CHu1Ew=
+"@nrwl/eslint-plugin-nx@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/eslint-plugin-nx/download/@nrwl/eslint-plugin-nx-12.9.0.tgz#4e8fb2ffbf2528702f182ccff9074375b60cebfd"
+  integrity sha1-To+y/78lKHAvGCzP+QdDdbYM6/0=
   dependencies:
-    "@nrwl/devkit" "12.8.0"
-    "@nrwl/workspace" "12.8.0"
+    "@nrwl/devkit" "12.9.0"
+    "@nrwl/workspace" "12.9.0"
     "@typescript-eslint/experimental-utils" "~4.28.3"
     confusing-browser-globals "^1.0.9"
+    ts-node "^9.1.1"
+    tsconfig-paths "^3.9.0"
 
-"@nrwl/jest@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/jest/download/@nrwl/jest-12.8.0.tgz#65ab4844bdc07bac1faaa444403ad29c9f294da6"
-  integrity sha1-ZatIRL3Ae6wfqqREQDrSnJ8pTaY=
+"@nrwl/jest@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/jest/download/@nrwl/jest-12.9.0.tgz#fb20631274c2462b73a0cb88d73ba7897c35e303"
+  integrity sha1-+yBjEnTCRitzoMuI1zuniXw14wM=
   dependencies:
     "@jest/reporters" "27.0.6"
     "@jest/test-result" "27.0.6"
-    "@nrwl/devkit" "12.8.0"
+    "@nrwl/devkit" "12.9.0"
     chalk "4.1.0"
     identity-obj-proxy "3.0.0"
     jest-config "27.0.6"
@@ -732,26 +734,27 @@
     rxjs "^6.5.4"
     tslib "^2.0.0"
 
-"@nrwl/linter@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/linter/download/@nrwl/linter-12.8.0.tgz#6f6c6192a19bb7ab7020576465871372a77459c7"
-  integrity sha1-b2xhkqGbt6twIFdkZYcTcqd0Wcc=
+"@nrwl/linter@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/linter/download/@nrwl/linter-12.9.0.tgz#1633045cb64871fb89eaced8c5b66664211237c6"
+  integrity sha1-FjMEXLZIcfuJ6s7YxbZmZCESN8Y=
   dependencies:
-    "@nrwl/devkit" "12.8.0"
+    "@nrwl/devkit" "12.9.0"
+    "@nrwl/jest" "12.9.0"
     glob "7.1.4"
     minimatch "3.0.4"
     tmp "~0.2.1"
     tslib "^2.0.0"
 
-"@nrwl/node@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/node/download/@nrwl/node-12.8.0.tgz#0bf80351a744cde2b659cba3794dba9c9790fbaf"
-  integrity sha1-C/gDUadEzeK2WcujeU26nJeQ+68=
+"@nrwl/node@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/node/download/@nrwl/node-12.9.0.tgz?cache=0&sync_timestamp=1631027824738&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40nrwl%2Fnode%2Fdownload%2F%40nrwl%2Fnode-12.9.0.tgz#fbc0a878d47f0ddff4cda28cdb34c3fe04a830c7"
+  integrity sha1-+8CoeNR/Dd/0zaKM2zTD/gSoMMc=
   dependencies:
-    "@nrwl/devkit" "12.8.0"
-    "@nrwl/jest" "12.8.0"
-    "@nrwl/linter" "12.8.0"
-    "@nrwl/workspace" "12.8.0"
+    "@nrwl/devkit" "12.9.0"
+    "@nrwl/jest" "12.9.0"
+    "@nrwl/linter" "12.9.0"
+    "@nrwl/workspace" "12.9.0"
     chalk "4.1.0"
     circular-dependency-plugin "5.2.0"
     copy-webpack-plugin "6.4.1"
@@ -770,29 +773,30 @@
     webpack-merge "4.2.1"
     webpack-node-externals "1.7.2"
 
-"@nrwl/nx-plugin@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/nx-plugin/download/@nrwl/nx-plugin-12.8.0.tgz#fd10853460d897c1d14faf066d693665a46f20fe"
-  integrity sha1-/RCFNGDYl8HRT68GbWk2ZaRvIP4=
+"@nrwl/nx-plugin@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/nx-plugin/download/@nrwl/nx-plugin-12.9.0.tgz#8b4006aef165203eb9c9424e07fdc4069f04e890"
+  integrity sha1-i0AGrvFlID65yUJOB/3EBp8E6JA=
   dependencies:
-    "@nrwl/devkit" "12.8.0"
-    "@nrwl/jest" "12.8.0"
-    "@nrwl/linter" "12.8.0"
-    "@nrwl/node" "12.8.0"
+    "@nrwl/devkit" "12.9.0"
+    "@nrwl/jest" "12.9.0"
+    "@nrwl/linter" "12.9.0"
+    "@nrwl/node" "12.9.0"
     fs-extra "^9.1.0"
     rxjs "^6.5.4"
     tslib "^2.0.0"
     yargs "15.4.1"
 
-"@nrwl/tao@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/tao/download/@nrwl/tao-12.8.0.tgz#fafbcf1885c8405df92e18633407add9d56c07d0"
-  integrity sha1-+vvPGIXIQF35LhhjNAet2dVsB9A=
+"@nrwl/tao@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/tao/download/@nrwl/tao-12.9.0.tgz?cache=0&sync_timestamp=1631027660224&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40nrwl%2Ftao%2Fdownload%2F%40nrwl%2Ftao-12.9.0.tgz#f8470ac0dccd5df414afc244fbbf37c23eb75764"
+  integrity sha1-+EcKwNzNXfQUr8JE+783wj63V2Q=
   dependencies:
     chalk "4.1.0"
     enquirer "~2.3.6"
     fs-extra "^9.1.0"
     jsonc-parser "3.0.0"
+    nx "12.9.0"
     rxjs "^6.5.4"
     rxjs-for-await "0.0.2"
     semver "7.3.4"
@@ -800,15 +804,15 @@
     tslib "^2.0.0"
     yargs-parser "20.0.0"
 
-"@nrwl/workspace@12.8.0":
-  version "12.8.0"
-  resolved "https://registry.nlark.com/@nrwl/workspace/download/@nrwl/workspace-12.8.0.tgz#fb2a79a803e94dbc49365670f147cea6ef9f98a6"
-  integrity sha1-+yp5qAPpTbxJNlZw8UfOpu+fmKY=
+"@nrwl/workspace@12.9.0":
+  version "12.9.0"
+  resolved "https://registry.nlark.com/@nrwl/workspace/download/@nrwl/workspace-12.9.0.tgz#218ac0bba8f1cd84235bc636ed6a928ec3550f86"
+  integrity sha1-IYrAu6jxzYQjW8Y27WqSjsNVD4Y=
   dependencies:
-    "@nrwl/cli" "12.8.0"
-    "@nrwl/devkit" "12.8.0"
-    "@nrwl/jest" "12.8.0"
-    "@nrwl/linter" "12.8.0"
+    "@nrwl/cli" "12.9.0"
+    "@nrwl/devkit" "12.9.0"
+    "@nrwl/jest" "12.9.0"
+    "@nrwl/linter" "12.9.0"
     chalk "4.1.0"
     chokidar "^3.5.1"
     cosmiconfig "^4.0.0"
@@ -5745,6 +5749,13 @@ nwsapi@^2.2.0:
   resolved "https://registry.nlark.com/nwsapi/download/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha1-IEh5qePQaP8qVROcLHcngGgaOLc=
 
+nx@12.9.0:
+  version "12.9.0"
+  resolved "https://registry.nlark.com/nx/download/nx-12.9.0.tgz?cache=0&sync_timestamp=1631027659922&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnx%2Fdownload%2Fnx-12.9.0.tgz#8553ce806fd19181ad8f81395f7812ab9fe5d4e2"
+  integrity sha1-hVPOgG/RkYGtj4E5X3gSq5/l1OI=
+  dependencies:
+    "@nrwl/cli" "*"
+
 oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.nlark.com/oauth-sign/download/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
@@ -7437,9 +7448,9 @@ ts-loader@5.4.5:
     micromatch "^3.1.4"
     semver "^5.0.1"
 
-ts-node@~9.1.1:
+ts-node@^9.1.1, ts-node@~9.1.1:
   version "9.1.1"
-  resolved "https://registry.nlark.com/ts-node/download/ts-node-9.1.1.tgz#51a9a450a3e959401bda5f004a72d54b936d376d"
+  resolved "https://registry.nlark.com/ts-node/download/ts-node-9.1.1.tgz?cache=0&sync_timestamp=1629307498234&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fts-node%2Fdownload%2Fts-node-9.1.1.tgz#51a9a450a3e959401bda5f004a72d54b936d376d"
   integrity sha1-UamkUKPpWUAb2l8ASnLVS5NtN20=
   dependencies:
     arg "^4.1.0"
